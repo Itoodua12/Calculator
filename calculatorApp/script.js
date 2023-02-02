@@ -1,13 +1,26 @@
 
 
+// function printSymbol(e) {
+//     const result = document.getElementById('result');
+//     const obj = e.target;
+
+//     result.value += obj.textContent;
+
+// }
+
 function printSymbol(e) {
     const result = document.getElementById('result');
     const obj = e.target;
-    result.textContent += obj.textContent;
+
+    if(result.value == 0) 
+        result.value = obj.textContent;
+    else
+        result.value += obj.textContent;
+
 }
 
-let result = document.getElementById('result');
 
+const result = document.getElementById('result');
 const num0 = document.getElementById('num0');
 const num1 = document.getElementById('num1');
 const num2 = document.getElementById('num2');
@@ -23,31 +36,21 @@ const plus = document.getElementById('plus');
 const mult = document.getElementById('mult');
 const div = document.getElementById('div');
 const decimal = document.getElementById('decimal');
+const leftp = document.getElementById('leftp');
+const rightp = document.getElementById('rightp');
+
 const clear = document.getElementById('clear');
+const equal = document.getElementById('equal');
 
-num0.addEventListener('click', printSymbol);
-num1.addEventListener('click', printSymbol);
-num2.addEventListener('click', printSymbol);
-num3.addEventListener('click', printSymbol);
-num4.addEventListener('click', printSymbol);
-num5.addEventListener('click', printSymbol);
-num6.addEventListener('click', printSymbol);
-num7.addEventListener('click', printSymbol);
-num8.addEventListener('click', printSymbol);
-num9.addEventListener('click', printSymbol);
-sub.addEventListener('click', printSymbol);
-plus.addEventListener('click', printSymbol);
-mult.addEventListener('click', printSymbol);
-div.addEventListener('click', printSymbol);
-decimal.addEventListener('click', printSymbol);
+const symbols = document.getElementsByClassName('symbol');
+
+// const symbols = [num0,num1,num2,num3,num4,num5,num6,num7,num8,num9,
+//             plus,mult,sub,div,decimal,rightp,leftp];
+
+for(let i = 0; i< symbols.length; i++) {
+    symbols[i].addEventListener('click', printSymbol);
+}
+
 clear.addEventListener('click', () => document.getElementById('result')
-                                .textContent = 0);
-
-
-
-
-
-
-
-
-
+                                .value = 0);
+equal.addEventListener('click', e => result.value = eval(result.value));
